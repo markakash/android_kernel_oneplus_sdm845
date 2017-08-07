@@ -489,10 +489,14 @@ static const char stat_nam[] = TASK_STATE_TO_CHAR_STR;
 static void
 print_task(struct seq_file *m, struct rq *rq, struct task_struct *p)
 {
-	if (rq->curr == p)
+	unsigned long state;
+
+	if (rq->curr == p) {
 		SEQ_printf(m, ">R");
-	else
-		SEQ_printf(m, " %c", task_state_to_char(p));
+	} else {
+		state = p->state ? __ffs(p->state) + 1 : 0;
+		SEQ_printf(m, " %c", state < sizeof(stat_nam) - 1 ? stat_nam[state] : '?');
+	}
 
 	SEQ_printf(m, "%15s %5d %9Ld.%06ld %9Ld %5d ",
 		p->comm, task_pid_nr(p),
