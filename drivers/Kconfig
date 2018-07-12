@@ -217,4 +217,5 @@ source "drivers/oneplus/Kconfig"
 
 source "drivers/tee/Kconfig"
 
+source "drivers/energy_model/Kconfig"
 endmenu
