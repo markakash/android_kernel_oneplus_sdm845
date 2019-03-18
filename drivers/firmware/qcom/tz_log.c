@@ -1244,9 +1244,6 @@ static int tz_log_probe(struct platform_device *pdev)
 		tzdbg.diag_buf = NULL;
 	}
 
-	if (tzprocfs_init(pdev))
-		goto err;
-
 	tzdbg_register_qsee_log_buf();
 
 	tzdbg_get_tz_version();
