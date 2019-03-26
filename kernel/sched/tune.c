@@ -884,7 +884,7 @@ boost_write(struct cgroup_subsys_state *css, struct cftype *cft,
 	int boost_pct;
 
 	/* Don't let userspace boost top-app's stune boost upon interaction */
-	if (!memcmp(css->cgroup->kn->name, "top-app", sizeof("top-app")))
+	if (!strcmp(css->cgroup->kn->name, "top-app"))
 		boost = 10;
 
 	if (boost < -100 || boost > 100)
