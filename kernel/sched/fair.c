@@ -6888,7 +6888,7 @@ static int start_cpu(struct task_struct *p, bool boosted,
 	struct root_domain *rd = cpu_rq(smp_processor_id())->rd;
 	int start_cpu = -1;
 
-	if (boosted && sched_feat(STUNE_BOOST_BIAS_BIG))
+	if (boosted)
 		return rd->max_cap_orig_cpu;
 
 	/* A task always fits on its rtg_target */
